@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog - Lista de Posts</title>
+</head>
+<body>
+    <h1>Lista de Posts</h1>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{% url 'post-detail' post.id %}">{{ post.title }}</a>
+                - {{ post.date_posted|date:"d M Y H:i" }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
