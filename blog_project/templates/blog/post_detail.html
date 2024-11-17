@@ -10,5 +10,25 @@
         {{ post.content|safe }}
     </div>
     <a href="{% url 'post-list' %}">Voltar à lista</a>
+    <h2>Comentários</h2>
+    <ul>
+        {% for comment in comments %}
+            <li>
+                <strong>{{ comment.author }}</strong> ({{ comment.date_posted|date:"d M Y H:i" }}):
+                {{ comment.content }}
+            </li>
+        {% endfor %}
+    </ul>
+    
+    {% if user.is_authenticated %}
+        <h3>Adicionar Comentário</h3>
+        <form method="POST">
+            {% csrf_token %}
+            <textarea name="content" rows="4" placeholder="Escreva seu comentário aqui..."></textarea><br>
+            <button type="submit">Postar</button>
+        </form>
+    {% else %}
+        <p>Você precisa <a href="/admin/login/">fazer login</a> para comentar.</p>
+    {% endif %}
 </body>
 </html>
