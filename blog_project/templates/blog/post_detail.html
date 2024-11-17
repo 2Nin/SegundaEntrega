@@ -19,8 +19,13 @@
             </li>
         {% endfor %}
     </ul>
-    
-    {% if user.is_authenticated %}
+    <h3>Categorias:</h3>
+    <ul>
+        {% for category in categories %}
+            <li><a href="{% url 'category-posts' category.id %}">{{ category.name }}</a></li>
+        {% endfor %}
+    </ul>
+        {% if user.is_authenticated %}
         <h3>Adicionar Comentário</h3>
         <form method="POST">
             {% csrf_token %}
