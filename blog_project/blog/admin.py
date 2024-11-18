@@ -3,3 +3,4 @@ from .models import Post, Comment, Category
 
 admin.site.register(Comment)
 admin.site.register(Post)
+admin.site.register(Category)

@@ -5,3 +5,5 @@
         <li><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></li>
     {% endfor %}
 </ul>
+{% load static %}
+<link rel="stylesheet" href="{% static 'blog/styles.css' %}">
